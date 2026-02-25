@@ -1,14 +1,261 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2487.6">
-  <style type="text/css">
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lustri.org | Welcome</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --bg-body: #f8fafc;
+            --bg-card: #ffffff;
+            --accent-blue: #2563eb;
+            --accent-soft: #dbeafe;
+            --text-primary: #0f172a;
+            --text-secondary: #64748b;
+            --font-main: 'Plus Jakarta Sans', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-primary);
+            font-family: var(--font-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* --- Logo --- */
+        .logo-wrap {
+            font-family: var(--font-mono);
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: var(--text-primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo-icon {
+            width: 28px;
+            height: 28px;
+            background: var(--accent-blue);
+            color: white;
+            border-radius: 6px;
+            display: grid;
+            place-items: center;
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2);
+        }
+
+        /* --- Floating Nav --- */
+        .nav-wrapper {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            width: 90%;
+            max-width: 500px;
+        }
+
+        .nav-dock {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 100px;
+            padding: 8px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--accent-blue);
+        }
+
+        .nav-photos-link {
+            background: var(--accent-blue);
+            color: white !important;
+            padding: 6px 16px;
+            border-radius: 50px;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+        }
+
+        /* --- Sections --- */
+        section {
+            padding: 160px 0 80px;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-weight: 800;
+            letter-spacing: -2px;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .text-blue {
+            color: var(--accent-blue);
+        }
+
+        .status-tag {
+            display: inline-block;
+            padding: 6px 16px;
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            color: var(--text-secondary);
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* --- Simplified About --- */
+        .simple-card {
+            background: white;
+            border-radius: 24px;
+            padding: 2.5rem;
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 0;
+            text-align: center;
+            border-top: 1px solid #f1f5f9;
+            background: white;
+        }
+
+        @media (max-width: 576px) {
+            .nav-dock { padding: 8px 12px; }
+            .nav-links { gap: 12px; }
+            .nav-links a { font-size: 0.75rem; }
+            section { padding-top: 120px; }
+        }
+    </style>
 </head>
 <body>
+
+    <!-- Floating Navigation -->
+    <div class="nav-wrapper">
+        <nav class="nav-dock">
+            <a href="#home" class="logo-wrap">
+                <div class="logo-icon"><i data-lucide="home" size="16"></i></div>
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Welcome</a></li>
+                <li><a href="#about">About</a></li>
+                <li>
+                    <a href="https://photos.lustri.org" target="_blank" rel="noopener" class="nav-photos-link">
+                        Photos <i data-lucide="camera" size="14" class="ms-1"></i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Welcome Section -->
+    <section id="home">
+        <div class="container">
+            <div class="row justify-content-center text-center">
+                <div class="col-lg-8">
+                    <span class="status-tag">Status: Site under construction</span>
+                    <h1 class="hero-title">Welcome to <br><span class="text-blue">lustri.org</span></h1>
+                    <p class="lead text-secondary mb-5">
+                        Thanks for stopping by! I'm currently refreshing the website. <br class="d-none d-md-block">
+                        In the meantime, you can find all our <strong>latest photos</strong> using the blue button in the top menu.
+                    </p>
+                    <div class="d-flex justify-content-center gap-3">
+                        <a href="https://photos.lustri.org" target="_blank" class="btn btn-primary btn-lg rounded-pill px-5 py-3 border-0" style="background: var(--accent-blue); font-weight: 700;">
+                            Go to Photos
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Small About Me Section -->
+    <section id="about" class="bg-white">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="simple-card text-center">
+                        <div class="mb-4 text-blue">
+                            <i data-lucide="info" size="32"></i>
+                        </div>
+                        <h2 class="fw-bold mb-3">About the Site</h2>
+                        <p class="text-secondary mb-0">
+                            Lustri.org is a personal corner of the web where I'm building out a small portfolio and a place for family to stay connected. It's a work in progress, but the goal is to keep things simple and easy to navigate. Stay tuned for more updates!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p class="text-secondary small mb-0">&copy; 2024 Lustri.org</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Scroll Observer for active links
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-links a:not([target="_blank"])');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
