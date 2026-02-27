@@ -139,7 +139,7 @@
         .section-title::after {
             content: '';
             display: block;
-            width: 50px;
+            width: 250px; 
             height: 3px;
             background: var(--accent-gold);
             margin: 12px auto;
@@ -312,7 +312,7 @@
     <section id="story" class="section-padding container">
         <div class="row align-items-center g-4">
             <div class="col-lg-6 text-center">
-                <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=2069&auto=format&fit=crop" alt="Our Journey" class="img-fluid rounded shadow w-75 mx-auto">
+                <img src="https://lustri.org/images/WelcomeImage.jpg" alt="Our Journey" class="img-fluid rounded shadow w-100 mx-auto">
             </div>
             <div class="col-lg-6 px-4 px-lg-5 text-center">
                 <h2 class="section-title">Welcome to our Day</h2>
@@ -337,17 +337,17 @@
             <div id="gallery-selection-view" class="row justify-content-center g-3 g-md-4">
                 <div class="col-12 col-sm-10 col-md-5">
                     <div class="selection-card" onclick="showGallery('wedding')">
-                        <img src="https://images.unsplash.com/photo-1519225495810-751783008118?q=80&w=2070&auto=format&fit=crop" class="preview-img" alt="Wedding Photos Preview">
+                        <img src="https://lustri.org/images/WeddingPhotos.jpg" class="preview-img" alt="Wedding Photos Preview">
                         <h3>Wedding Photos</h3>
-                        <p class="small text-muted mb-3">The highlights and curated moments of our special day.</p>
+                        <div class="mb-3"></div>
                         <button class="btn btn-gallery">View Gallery</button>
                     </div>
                 </div>
                 <div class="col-12 col-sm-10 col-md-5">
                     <div class="selection-card" onclick="showGallery('raw')">
-                        <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=2070&auto=format&fit=crop" class="preview-img" alt="Raw Photos Preview">
+                        <img src="https://lustri.org/images/RAW-05596.jpg" class="preview-img" alt="Raw Photos Preview">
                         <h3>Raw Photos</h3>
-                        <p class="small text-muted mb-3">The full collection of candid shots and behind-the-scenes.</p>
+                        <div class="mb-3"></div>
                         <button class="btn btn-gallery">View Gallery</button>
                     </div>
                 </div>
@@ -424,8 +424,8 @@
 
         // --- CONFIGURATION ---
         const SYNOLOGY_LINKS = {
-            wedding: "https://lustri.synology.me:6501/mo/sharing/DVXb34Mhx", 
-            raw: "https://YOUR_SYNOLOGY_IP_OR_ID/mo/sharing/YOUR_RAW_LINK"
+            wedding: "https://lustrifamily.us5.quickconnect.to/mo/sharing/DVXb34Mhx", 
+            raw: "https://LustriFamily.quickconnect.to/mo/sharing/QSQuZQNBD"
         };
 
         const VIDEO_LINKS = {
@@ -440,6 +440,12 @@
             const synologyIframe = document.getElementById('synology-iframe');
             const backBtn = document.getElementById('back-to-selection');
             
+            // Both gallery types now open in a new tab
+            if (type === 'wedding' || type === 'raw') {
+                window.open(SYNOLOGY_LINKS[type], '_blank');
+                return;
+            }
+
             if (type === 'selection') {
                 selectionView.style.display = 'flex';
                 synologyWrapper.style.display = 'none';
