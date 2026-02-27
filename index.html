@@ -15,6 +15,7 @@
             --bg-body: #f8fafc;
             --bg-card: #ffffff;
             --accent-blue: #2563eb;
+            --accent-light: #60a5fa;
             --accent-soft: #dbeafe;
             --text-primary: #0f172a;
             --text-secondary: #64748b;
@@ -30,29 +31,6 @@
             line-height: 1.6;
         }
 
-        /* --- Logo --- */
-        .logo-wrap {
-            font-family: var(--font-mono);
-            font-weight: 800;
-            font-size: 1.2rem;
-            color: var(--text-primary);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .logo-icon {
-            width: 28px;
-            height: 28px;
-            background: var(--accent-blue);
-            color: white;
-            border-radius: 6px;
-            display: grid;
-            place-items: center;
-            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2);
-        }
-
         /* --- Floating Nav --- */
         .nav-wrapper {
             position: fixed;
@@ -60,94 +38,123 @@
             left: 50%;
             transform: translateX(-50%);
             z-index: 1000;
-            width: 90%;
-            max-width: 500px;
+            width: 95%;
+            max-width: 700px; 
+            display: flex;
+            justify-content: center;
         }
 
         .nav-dock {
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.5);
             border-radius: 100px;
-            padding: 8px 24px;
-            display: flex;
-            justify-content: space-between;
+            padding: 6px;
+            display: inline-flex;
+            justify-content: center;
             align-items: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
         }
 
         .nav-links {
             display: flex;
-            gap: 20px;
+            gap: 2px;
             list-style: none;
             margin: 0;
             padding: 0;
+            align-items: center;
         }
 
-        .nav-links a {
+        .nav-btn {
             color: var(--text-secondary);
             text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 700;
+            font-size: 0.75rem;
+            font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            transition: all 0.2s ease;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 10px 16px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: transparent;
+            border: 1px solid transparent;
+            min-width: 100px;
         }
 
-        .nav-links a:hover, .nav-links a.active {
+        .nav-btn:hover {
+            background: rgba(37, 99, 235, 0.05);
             color: var(--accent-blue);
         }
 
-        .nav-photos-link {
-            background: var(--accent-blue);
+        .nav-btn.active {
+            background: var(--accent-blue) !important;
             color: white !important;
-            padding: 6px 16px;
-            border-radius: 50px;
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+        }
+
+        /* --- Logo Branding --- */
+        .brand-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .brand-mark {
+            width: 72px;
+            height: 72px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-light));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.2rem;
+            font-weight: 800;
+            box-shadow: 0 15px 35px rgba(37, 99, 235, 0.2);
+            transform: rotate(-6deg);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .brand-container:hover .brand-mark {
+            transform: rotate(0deg) scale(1.1);
+        }
+
+        .brand-text {
+            font-size: clamp(3rem, 10vw, 4.5rem);
+            font-weight: 800;
+            letter-spacing: -3px;
+            margin: 0;
+            line-height: 1;
+            background: linear-gradient(to bottom, #0f172a, #334155);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .brand-dot {
+            color: var(--accent-blue);
+            -webkit-text-fill-color: var(--accent-blue);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         /* --- Sections --- */
         section {
             padding: 160px 0 80px;
-            min-height: 80vh;
+            min-height: 90vh;
             display: flex;
             align-items: center;
         }
 
-        .hero-title {
-            font-size: clamp(2.5rem, 8vw, 4rem);
-            font-weight: 800;
-            letter-spacing: -2px;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-        }
-
-        .text-blue {
-            color: var(--accent-blue);
-        }
-
-        .status-tag {
-            display: inline-block;
-            padding: 6px 16px;
-            background: #fff;
-            border: 1px solid #e2e8f0;
-            color: var(--text-secondary);
-            border-radius: 100px;
-            font-weight: 600;
-            font-size: 0.8rem;
-            margin-bottom: 1.5rem;
-        }
-
-        /* --- Simplified About --- */
-        .simple-card {
-            background: white;
-            border-radius: 24px;
-            padding: 2.5rem;
-            border: 1px solid rgba(0,0,0,0.03);
-        }
-
-        /* Footer */
         footer {
             padding: 60px 0;
             text-align: center;
@@ -156,9 +163,14 @@
         }
 
         @media (max-width: 576px) {
-            .nav-dock { padding: 8px 12px; }
-            .nav-links { gap: 12px; }
-            .nav-links a { font-size: 0.75rem; }
+            .nav-btn { 
+                padding: 8px 10px; 
+                font-size: 0.6rem;
+                min-width: 75px;
+                gap: 4px;
+            }
+            .brand-text { font-size: 3rem; }
+            .brand-mark { width: 60px; height: 60px; font-size: 1.8rem; }
             section { padding-top: 120px; }
         }
     </style>
@@ -168,57 +180,46 @@
     <!-- Floating Navigation -->
     <div class="nav-wrapper">
         <nav class="nav-dock">
-            <a href="#home" class="logo-wrap">
-                <div class="logo-icon"><i data-lucide="home" size="16"></i></div>
-            </a>
-            
             <ul class="nav-links">
-                <li><a href="#home" class="active">Welcome</a></li>
-                <li><a href="#about">About</a></li>
                 <li>
-                    <a href="https://photos.lustri.org" target="_blank" rel="noopener" class="nav-photos-link">
-                        Photos <i data-lucide="camera" size="14" class="ms-1"></i>
+                    <a href="#home" class="nav-btn active">
+                        <i data-lucide="home" size="14"></i> Home
+                    </a>
+                </li>
+                <li>
+                    <a href="https://photos.lustri.org" target="_blank" rel="noopener" class="nav-btn">
+                        <i data-lucide="camera" size="14"></i> Photos
+                    </a>
+                </li>
+                <li>
+                    <a href="https://wedding.lustri.org" target="_blank" rel="noopener" class="nav-btn">
+                        <i data-lucide="gem" size="14"></i> Wedding
+                    </a>
+                </li>
+                <li>
+                    <a href="https://drive.lustri.org" target="_blank" rel="noopener" class="nav-btn">
+                        <i data-lucide="folder" size="14"></i> Drive
                     </a>
                 </li>
             </ul>
         </nav>
     </div>
 
-    <!-- Welcome Section -->
+    <!-- Hero Section -->
     <section id="home">
         <div class="container">
             <div class="row justify-content-center text-center">
-                <div class="col-lg-8">
-                    <span class="status-tag">Status: Site under construction</span>
-                    <h1 class="hero-title">Welcome to <br><span class="text-blue">lustri.org</span></h1>
-                    <p class="lead text-secondary mb-5">
-                        Thanks for stopping by! I'm currently refreshing the website. <br class="d-none d-md-block">
-                        In the meantime, you can find all our <strong>latest photos</strong> using the blue button in the top menu.
-                    </p>
-                    <div class="d-flex justify-content-center gap-3">
-                        <a href="https://photos.lustri.org" target="_blank" class="btn btn-primary btn-lg rounded-pill px-5 py-3 border-0" style="background: var(--accent-blue); font-weight: 700;">
-                            Go to Photos
-                        </a>
+                <div class="col-lg-10">
+                    
+                    <!-- Logo Branding -->
+                    <div class="brand-container">
+                        <div class="brand-mark">L</div>
+                        <h1 class="brand-text">LUSTRI<span class="brand-dot">.</span>ORG</h1>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Small About Me Section -->
-    <section id="about" class="bg-white">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-6">
-                    <div class="simple-card text-center">
-                        <div class="mb-4 text-blue">
-                            <i data-lucide="info" size="32"></i>
-                        </div>
-                        <h2 class="fw-bold mb-3">About the Site</h2>
-                        <p class="text-secondary mb-0">
-                            Lustri.org is a personal corner of the web where I'm building out a small portfolio and a place for family to stay connected. It's a work in progress, but the goal is to keep things simple and easy to navigate. Stay tuned for more updates!
-                        </p>
-                    </div>
+                    <p class="lead text-secondary mx-auto" style="max-width: 650px;">
+                        Capturing light, celebrating love, and organizing life. Explore our <strong>life</strong>, relive the <strong>wedding highlights</strong>, or browse the <strong>private archive</strong> above.
+                    </p>
                 </div>
             </div>
         </div>
@@ -234,27 +235,16 @@
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Initialize Icons
         lucide.createIcons();
 
-        // Scroll Observer for active links
-        const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('.nav-links a:not([target="_blank"])');
-
+        // Simple scroll handler for Home button state
         window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (pageYOffset >= sectionTop - 200) {
-                    current = section.getAttribute('id');
-                }
-            });
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href').includes(current)) {
-                    link.classList.add('active');
-                }
-            });
+            const homeBtn = document.querySelector('a[href="#home"]');
+            if (window.pageYOffset < 300) {
+                homeBtn.classList.add('active');
+            } else {
+                homeBtn.classList.remove('active');
+            }
         });
     </script>
 </body>
